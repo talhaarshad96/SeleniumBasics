@@ -70,8 +70,16 @@ public class Autocomplete {
 
         Thread.sleep(2000);*/
 
-        //
-        driver.get("https://formy-project.herokuapp.com/dragdrop");
+        //radio buttons
+        driver.get("https://formy-project.herokuapp.com/radiobutton");
+        WebElement radioBtn1 = driver.findElement(By.id("radio-button-1"));
+        radioBtn1.click();
+
+        WebElement radioBtn2 = driver.findElement(By.xpath("/html/body/div/div[3]/input"));
+        radioBtn2.click();
+
+        WebElement radioBtn3 = driver.findElement(By.id("radio-button-1"));
+        radioBtn3.click();
 
         driver.quit();
     }
