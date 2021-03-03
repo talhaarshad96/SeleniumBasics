@@ -2,6 +2,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.Assert.assertEquals;
 
 public class Autocomplete {
     private static WebDriver driver;
@@ -71,7 +76,7 @@ public class Autocomplete {
         Thread.sleep(2000);*/
 
         //radio buttons
-        driver.get("https://formy-project.herokuapp.com/radiobutton");
+      /*  driver.get("https://formy-project.herokuapp.com/radiobutton");
         WebElement radioBtn1 = driver.findElement(By.id("radio-button-1"));
         radioBtn1.click();
 
@@ -79,7 +84,24 @@ public class Autocomplete {
         radioBtn2.click();
 
         WebElement radioBtn3 = driver.findElement(By.id("radio-button-1"));
-        radioBtn3.click();
+        radioBtn3.click();*/
+
+        //date picker
+       /* driver.get("https://formy-project.herokuapp.com/datepicker");
+        WebElement datepicker = driver.findElement(By.id("datepicker"));
+        datepicker.sendKeys("03/03/2021");
+        datepicker.sendKeys(Keys.ENTER);*/
+
+        //confirm the form is submitted
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+
+        WebElement alert = wait.until((ExpectedConditions.visibilityOfElementLocated(By.className("alert"))));
+
+        String alertText = alert.getText();
+
+        assertEquals("The form was successfully submitted", alertText);
+
 
         driver.quit();
     }
